@@ -6,6 +6,7 @@ use App\Observers\EventObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 #[ObservedBy(EventObserver::class)]
 class Event extends Model
@@ -31,11 +32,10 @@ class Event extends Model
     /**
      * Get the user's first name.
      */
-    protected function qrCode(): \Attribute
+
+    public function getQrCodeAttribute()
     {
-        return Attribute::make(
-            get: fn (string $value) => ucfirst($value),
-        );
+        return QrCode::generate($this->name);
     }
 
     public function grade(): \Illuminate\Database\Eloquent\Relations\BelongsTo

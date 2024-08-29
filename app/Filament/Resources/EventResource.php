@@ -12,6 +12,8 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Actions\Action;
+
 
 class EventResource extends Resource
 {
@@ -30,7 +32,7 @@ class EventResource extends Resource
                 Forms\Components\DateTimePicker::make('start_date'),
                 Forms\Components\DateTimePicker::make('end_date'),
                 Forms\Components\Select::make('grade_id')
-                    ->relationship('grade', 'title')
+                    ->relationship('grade', 'title'),
             ]);
     }
 
@@ -62,6 +64,9 @@ class EventResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Action::make('QR')
+                    ->url(function (Event $record) { return route('events.show', $record); })
+                    ->openUrlInNewTab()
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

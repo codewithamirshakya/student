@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\UpdateEventRequest;
 use App\Models\Event;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class EventController extends Controller
@@ -41,7 +42,7 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        //
+        return QrCode::generate($event->name);
     }
 
     /**

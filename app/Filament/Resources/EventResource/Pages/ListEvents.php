@@ -5,6 +5,7 @@ namespace App\Filament\Resources\EventResource\Pages;
 use App\Filament\Exports\EventExporter;
 use App\Filament\Imports\EventImporter;
 use App\Filament\Resources\EventResource;
+use App\Models\Event;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
@@ -19,7 +20,7 @@ class ListEvents extends ListRecords
             Actions\ImportAction::make()
                 ->importer(EventImporter::class),
             Actions\ExportAction::make()
-                ->exporter(EventExporter::class)
+                ->exporter(EventExporter::class),
         ];
     }
 }
