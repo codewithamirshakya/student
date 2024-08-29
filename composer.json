@@ -10,6 +10,7 @@
         "filament/filament": "^3.2",
         "google/apiclient": "^2.17",
         "laravel/framework": "^11.9",
+        "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "simplesoftwareio/simple-qrcode": "~4",
         "spatie/laravel-query-builder": "^6.0"
